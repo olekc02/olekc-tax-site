@@ -1,0 +1,33 @@
+
+{% extends "base.html" %}
+{% block content %}
+<section class="section">
+  <div class="container">
+    <h1 class="mb-4">Contact</h1>
+    <div class="row g-4">
+      <div class="col-lg-7">
+        <div class="card p-4">
+          <h5>Get in touch</h5>
+          <p>Fast responses within 1 business day.</p>
+          <ul class="mb-0">
+            <li>Phone: {{ PHONE }}</li>
+            <li>Email: <a href="mailto:{{ EMAIL }}">{{ EMAIL }}</a></li>
+          </ul>
+          <hr>
+          <p class="mb-0">Prefer a form? Use your email client to send details to <a href="mailto:{{ EMAIL }}">{{ EMAIL }}</a>.</p>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="card p-4">
+          <h5>What to include</h5>
+          <ul class="mb-0">
+            <li>Name & best phone number</li>
+            <li>Type of service (1040, 1120S, 1065, 1041, etc.)</li>
+            <li>Any deadlines or special questions</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

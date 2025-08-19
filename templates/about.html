@@ -1,0 +1,29 @@
+
+{% extends "base.html" %}
+{% block content %}
+<section class="section">
+  <div class="container">
+    <h1 class="mb-4">About</h1>
+    <div class="row g-4">
+      <div class="col-lg-8">
+        <p><strong>Oleksiy Abramiv</strong> — Tax Preparer & Payroll Analyst. I prepare individual and business tax returns,
+        manage multi‑state payroll audits, and ensure full‑cycle compliance. Tools include QuickBooks, CCH ProSystem fx,
+        Greenshades, UKG, SQL Server, and NetSuite. Fluent in English, Russian, and Ukrainian.</p>
+        <p>Currently pursuing an MBA in Accounting. I offer remote services and serve clients across Illinois and beyond.</p>
+        <ul>
+          <li>PTIN: Active</li>
+          <li>EFIN: (add when issued)</li>
+          <li>CPA Candidate — planning REG & FAR in Q3 2025</li>
+        </ul>
+      </div>
+      <div class="col-lg-4">
+        <div class="card p-4">
+          <h5>Contact</h5>
+          <p class="mb-1">{{ PHONE }}</p>
+          <p class="mb-0"><a href="mailto:{{ EMAIL }}">{{ EMAIL }}</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

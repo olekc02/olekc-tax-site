@@ -1,0 +1,50 @@
+
+{% extends "base.html" %}
+{% block content %}
+<section class="section">
+  <div class="container">
+    <h1 class="mb-4">Services & Transparent Pricing</h1>
+    <div class="row g-4">
+      <div class="col-lg-8">
+        <div class="card p-4 mb-3">
+          <h5 class="mb-3">Individuals (Form 1040)</h5>
+          <ul class="mb-0">
+            <li>Basic 1040 — <strong>$150</strong> (Fed + 1 state)</li>
+            <li>1040 + Schedule C — <strong>$250</strong> (self‑employed)</li>
+            <li>1040 + Rentals (Sch E, up to 2) — <strong>$250</strong></li>
+            <li>Amended Return (1040X) — <strong>$150</strong></li>
+          </ul>
+        </div>
+        <div class="card p-4 mb-3">
+          <h5 class="mb-3">Business Returns</h5>
+          <ul class="mb-0">
+            <li>1120 — C Corporation — <strong>$350</strong></li>
+            <li>1120S — S Corporation — <strong>$350</strong></li>
+            <li>1065 — Partnership — <strong>$350</strong></li>
+            <li>1041 — Estates & Trusts — <strong>$200</strong></li>
+          </ul>
+        </div>
+        <div class="card p-4">
+          <h5 class="mb-3">Year‑Round Support</h5>
+          <ul class="mb-0">
+            <li>Bookkeeping packages — <strong>$150–$500 / month</strong></li>
+            <li>Payroll processing — <strong>$50–$150 per run</strong></li>
+            <li>Quarterly tax filings — <strong>$150–$300 / quarter</strong></li>
+            <li>IRS notice & audit support — <strong>$100–$200 / hour</strong></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card p-4">
+          <h5>Get a Quote</h5>
+          <p>Tell me a bit about your situation and I’ll confirm your price before we begin.</p>
+          <a class="btn btn-gold w-100 mb-2" href="{{ url_for('contact') }}">Request a Quote</a>
+          <a class="btn btn-outline-light w-100" href="{{ url_for('pay') }}">Pay Online</a>
+          <hr>
+          <div class="small">*Complex/multi‑state returns may vary. I’ll give you a clear quote up front.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

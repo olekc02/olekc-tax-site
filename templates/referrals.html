@@ -1,0 +1,16 @@
+
+{% extends "base.html" %}
+{% block content %}
+<section class="section">
+  <div class="container">
+    <h1 class="mb-3">$25 Referral Program</h1>
+    <p>Earn <strong>$25</strong> for every person you refer who files a return with us — no limits.</p>
+    <ol>
+      <li>Share our contact info or QR code.</li>
+      <li>Your friend files with {{ BUSINESS_NAME }}.</li>
+      <li>You get $25 cash as a thank‑you.</li>
+    </ol>
+    <a class="btn btn-gold" href="{{ url_for('contact') }}">Refer a Friend</a>
+  </div>
+</section>
+{% endblock %}
