@@ -1,150 +1,183 @@
-
 {% extends "base.html" %}
+{% set title = "Stress-Free, Affordable Tax Prep & Accounting" %}
+
 {% block content %}
-<section class="hero">
-  <div class="container">
-    <div class="row align-items-center g-4">
+
+<!-- HERO -->
+<section class="hero-bleed d-flex align-items-center">
+  <div class="container py-5">
+    <div class="row align-items-center">
       <div class="col-lg-7">
-        <div class="kicker mb-2">Illinois • Remote Friendly</div>
-        <h1 class="display-5 fw-bold">Stress‑Free, Accurate Tax Filing — <span class="text-warning">Without Overpaying</span></h1>
-        <p class="lead mb-4">Individuals, Businesses, Estates & Trusts • Multi‑State Expertise • Year‑Round Support</p>
-        <div class="d-flex gap-2 flex-wrap">
-          <a href="{{ url_for('contact') }}" class="btn btn-gold btn-lg">Book a Consultation</a>
-          <a href="{{ url_for('services') }}" class="btn btn-outline-light btn-lg">See Pricing</a>
+        <h1 class="display-5 fw-bold lh-tight">
+          Stress-Free, Affordable <span class="text-gold">Tax Preparation</span> & Accounting
+        </h1>
+        <p class="lead mt-3">
+          Individual & Business Returns • Bookkeeping • Payroll • Multi-State Compliance
+        </p>
+        <div class="d-flex gap-2 mt-3">
+          <a href="#contact" class="btn btn-gold btn-lg"><i class="bi bi-calendar-event me-1"></i>Book a Consultation</a>
+          <a href="{{ payment_link or '#' }}" target="_blank" rel="noopener" class="btn btn-outline-light btn-lg">
+            <i class="bi bi-credit-card me-1"></i>Pay Online
+          </a>
         </div>
-        <div class="trust mt-4 small">Secure e‑file • Direct deposit • $25 referral bonus • Fast responses</div>
-      </div>
-      <div class="col-lg-5">
-        <div class="card p-4">
-          <div class="d-flex align-items-center gap-2 mb-3">
-            <div class="icon-pill">✓</div><h5 class="mb-0">Why Choose {{ BUSINESS_NAME }}</h5>
-          </div>
-          <ul class="mb-0">
-            <li>PTIN holder • MBA in progress • Multi‑platform experience (QuickBooks, CCH, NetSuite)</li>
-            <li>Simple, transparent pricing — no surprises</li>
-            <li>Individuals & business returns, audit/notice help, payroll & books</li>
-          </ul>
-        </div>
+        <p class="small mt-2 opacity-75">PTIN holder • Experience with Drake, TaxAct, QuickBooks, CCH, NetSuite</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section">
+<!-- VALUE / WHY US -->
+<section id="about" class="py-5 bg-dark">
   <div class="container">
+    <div class="text-center mb-4">
+      <h2 class="fw-bold">Why Choose OLEKC?</h2>
+      <p class="text-secondary">Transparent pricing. Clear communication. Year-round support.</p>
+    </div>
     <div class="row g-4">
-      <div class="col-md-4"><div class="card h-100 p-4">
-        <div class="icon-pill mb-3">1040</div>
-        <h5>Individuals & Families</h5>
-        <p class="mb-0">W‑2, credits, dependents, self‑employed, rentals, amended returns.</p>
-      </div></div>
-      <div class="col-md-4"><div class="card h-100 p-4">
-        <div class="icon-pill mb-3">BIZ</div>
-        <h5>Businesses</h5>
-        <p class="mb-0">1120 / 1120S / 1065 • Bookkeeping • Payroll • Quarterly filings.</p>
-      </div></div>
-      <div class="col-md-4"><div class="card h-100 p-4">
-        <div class="icon-pill mb-3">1041</div>
-        <h5>Estates & Trusts</h5>
-        <p class="mb-0">1041 preparation and K‑1s for beneficiaries.</p>
-      </div></div>
-    </div>
-  </div>
-</section>
-
-<section class="section-alt">
-  <div class="container">
-    <div class="row g-4 align-items-stretch">
-      <div class="col-lg-7">
-        <div class="card h-100 p-4">
-          <h5 class="mb-3">Popular Packages</h5>
-          <div class="row g-3">
-            <div class="col-sm-6">
-              <div class="p-3 border rounded h-100">
-                <div class="small text-muted">Individuals</div>
-                <div class="price-tag">$150</div>
-                <div>Basic 1040 (Fed + 1 state)</div>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="p-3 border rounded h-100">
-                <div class="small text-muted">Self‑Employed</div>
-                <div class="price-tag">$250</div>
-                <div>1040 + Schedule C</div>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="p-3 border rounded h-100">
-                <div class="small text-muted">Business</div>
-                <div class="price-tag">$350</div>
-                <div>1120 / 1120S / 1065</div>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="p-3 border rounded h-100">
-                <div class="small text-muted">Estates & Trusts</div>
-                <div class="price-tag">$200</div>
-                <div>1041 + K‑1s</div>
-              </div>
-            </div>
+      <div class="col-md-3">
+        <div class="card feature-card h-100">
+          <div class="card-body">
+            <i class="bi bi-award fs-1 text-gold"></i>
+            <h5 class="mt-3">Experienced</h5>
+            <p>1040, 1120/1120S, 1065, 1041, payroll tax audits & multi-state compliance.</p>
           </div>
-          <a class="btn btn-gold mt-3" href="{{ url_for('services') }}">View Full Pricing</a>
         </div>
       </div>
-      <div class="col-lg-5">
-        <div class="card h-100 p-4">
-          <h5 class="mb-3">What Clients Say</h5>
-          <div class="small">“Super fast and professional — got a bigger refund than last year.”</div>
-          <hr>
-          <div class="small">“Handled my multi‑state return and explained everything clearly.”</div>
-          <hr>
-          <div class="small">“Set up payroll and books for my shop. Huge time saver.”</div>
+      <div class="col-md-3">
+        <div class="card feature-card h-100">
+          <div class="card-body">
+            <i class="bi bi-cash-coin fs-1 text-gold"></i>
+            <h5 class="mt-3">Flat Rates</h5>
+            <p>Up-front pricing with no surprises. $25 off for every referral—unlimited.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card feature-card h-100">
+          <div class="card-body">
+            <i class="bi bi-laptop fs-1 text-gold"></i>
+            <h5 class="mt-3">Remote-Friendly</h5>
+            <p>Secure document upload and e-signing—Chicago & nationwide clients.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card feature-card h-100">
+          <div class="card-body">
+            <i class="bi bi-shield-check fs-1 text-gold"></i>
+            <h5 class="mt-3">Audit Support</h5>
+            <p>Notices & amendments handled promptly with clear documentation.</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section">
+<!-- SERVICES -->
+<section id="services" class="py-5 bg-midnight">
   <div class="container">
+    <div class="text-center mb-4">
+      <h2 class="fw-bold">Tax & Accounting Services</h2>
+      <p class="text-secondary">Pricing starts at:</p>
+    </div>
     <div class="row g-4">
-      <div class="col-lg-8">
-        <h3 class="mb-3">Common Questions</h3>
-        <div class="accordion" id="faq">
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="q1">
-              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#a1">How do I get started?</button>
-            </h2>
-            <div id="a1" class="accordion-collapse collapse show" data-bs-parent="#faq">
-              <div class="accordion-body">Contact me with your situation, and I’ll send a short intake + document checklist. Easy.</div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="q2">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a2">Do you handle multi‑state returns?</button>
-            </h2>
-            <div id="a2" class="accordion-collapse collapse" data-bs-parent="#faq">
-              <div class="accordion-body">Yes — I regularly prepare multi‑state and complex returns for remote workers and business owners.</div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="q3">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a3">How does pricing work?</button>
-            </h2>
-            <div id="a3" class="accordion-collapse collapse" data-bs-parent="#faq">
-              <div class="accordion-body">Transparent starting prices are listed on the Services page; I’ll confirm your quote before work begins.</div>
-            </div>
+      <div class="col-md-4">
+        <div class="card service-card h-100">
+          <div class="card-body">
+            <h5 class="fw-bold">1040 – Individual</h5>
+            <p class="display-6 fw-bold text-gold">$150+</p>
+            <p>W-2, 1099, credits, deductions. Schedule C/SE available.</p>
           </div>
         </div>
       </div>
-      <div class="col-lg-4">
-        <div class="card p-4">
-          <h5>Still have questions?</h5>
-          <p>Book a quick call. I’ll point you in the right direction.</p>
-          <a class="btn btn-gold w-100" href="{{ url_for('contact') }}">Talk to Oleksiy</a>
+      <div class="col-md-4">
+        <div class="card service-card h-100">
+          <div class="card-body">
+            <h5 class="fw-bold">1041 – Estates & Trusts</h5>
+            <p class="display-6 fw-bold text-gold">$200+</p>
+            <p>Fiduciary returns with income allocation and K-1s.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card service-card h-100">
+          <div class="card-body">
+            <h5 class="fw-bold">1065 – Partnerships</h5>
+            <p class="display-6 fw-bold text-gold">$350+</p>
+            <p>Books tie-out, partner K-1s, multi-state if needed.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card service-card h-100">
+          <div class="card-body">
+            <h5 class="fw-bold">1120S – S-Corp</h5>
+            <p class="display-6 fw-bold text-gold">$350+</p>
+            <p>Officer payroll coordination, basis tracking, K-1s.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card service-card h-100">
+          <div class="card-body">
+            <h5 class="fw-bold">1120 – C-Corp</h5>
+            <p class="display-6 fw-bold text-gold">$350+</p>
+            <p>Tax planning, depreciation, state filings as required.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card service-card h-100">
+          <div class="card-body">
+            <h5 class="fw-bold">Bookkeeping & Payroll</h5>
+            <p class="display-6 fw-bold text-gold">Custom</p>
+            <p>Monthly bookkeeping, reconciliations, payroll tax filings.</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- REFERRAL BANNER -->
+<section class="py-4 bg-gold text-dark text-center">
+  <div class="container fw-bold">
+    Refer a friend & get <span class="text-dark">$25 OFF</span> — unlimited referrals.
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="py-5 bg-dark">
+  <div class="container">
+    <div class="row g-4 align-items-center">
+      <div class="col-lg-6">
+        <h2 class="fw-bold">Let’s get your return filed right.</h2>
+        <p>Send your documents or request a consultation. Remote & Chicago-area clients welcome.</p>
+        <div class="d-flex flex-column gap-2">
+          <a class="btn btn-gold btn-lg w-auto" href="mailto:olekcsgoods@gmail.com">
+            <i class="bi bi-envelope me-1"></i>Email: olekcsgoods@gmail.com
+          </a>
+          <a class="btn btn-outline-light w-auto" href="{{ payment_link or '#' }}" target="_blank" rel="noopener">
+            <i class="bi bi-credit-card me-1"></i>Pay Online
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card bg-midnight border-0 shadow-sm">
+          <div class="card-body">
+            <h5 class="fw-bold mb-3">Quick Links</h5>
+            <ul class="list-unstyled m-0">
+              <li class="mb-2"><i class="bi bi-cloud-arrow-up me-2 text-gold"></i>Secure document upload (on request)</li>
+              <li class="mb-2"><i class="bi bi-pencil-square me-2 text-gold"></i>Amendments & IRS notices</li>
+              <li class="mb-2"><i class="bi bi-geo-alt me-2 text-gold"></i>Service area: Chicago & remote nationwide</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 {% endblock %}

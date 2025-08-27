@@ -1,44 +1,44 @@
-
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, send_from_directory, abort
 import os
 
 app = Flask(__name__)
 
-BUSINESS_NAME = "OLEKC Tax Services"
-PHONE = "(773) 677-8783"
-EMAIL = "olekcsgoods@gmail.com"
-PAYMENT_LINK = os.getenv("OLEKC_PAYMENT_LINK", "#")
+# ---- Routes ----
 
-@app.context_processor
-def inject_globals():
-    return dict(BUSINESS_NAME=BUSINESS_NAME, PHONE=PHONE, EMAIL=EMAIL, PAYMENT_LINK=PAYMENT_LINK)
-
-@app.route('/')
+@app.route("/")
 def home():
-    return render_template('index.html', title="Home")
+    """
+    Homepage with hero, services, referral, and contact sections.
+    Pass a payment link via the OLEKC_PAYMENT_LINK environment variable (optional).
+    """
+    payment_link = os.environ.get("OLEKC_PAYMENT_LINK")  # e.g., Square/PayPal checkout URL
+    return render_template("index.html", payment_link=payment_link)
 
-@app.route('/services')
-def services():
-    return render_template('services.html', title="Services & Pricing")
+@app.route("/health")
+def health():
+    """Simple health check for uptime monitors."""
+    return {"status": "ok"}, 200
 
-@app.route('/about')
-def about():
-    return render_template('about.html', title="About")
+@app.route("/favicon.ico")
+def favicon():
+    """Serve a favicon if you put one at static/img/favicon.ico."""
+    try:
+        return send_from_directory(
+            os.path.join(app.root_path, "static", "img"),
+            "favicon.ico",
+            mimetype="image/vnd.microsoft.icon",
+        )
+    except Exception:
+        abort(404)
 
-@app.route('/referrals')
-def referrals():
-    return render_template('referrals.html', title="Referral Program")
+@app.route("/robots.txt")
+def robots():
+    """Optional: allow indexing; adjust if you want to block bots."""
+    return "User-agent: *\nAllow: /", 200, {"Content-Type": "text/plain; charset=utf-8"}
 
-@app.route('/contact')
-def contact():
-    return render_template('contact.html', title="Contact")
+# ---- App entrypoint (Render requires binding to 0.0.0.0 and PORT) ----
 
-@app.route('/pay')
-def pay():
-    return render_template('pay.html', title="Pay Now")
-
-if __name__ == '__main__':
-    import os
+if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
-
+    # debug=True is fine locally; Render ignores it
+    app.run(host="0.0.0.0", port=port, debug=True)
